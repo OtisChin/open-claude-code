@@ -1,0 +1,1 @@
+export type SdkTool = Record<string, unknown>

@@ -1,0 +1,1 @@
+export type SecureStorageRecord = Record<string, unknown>

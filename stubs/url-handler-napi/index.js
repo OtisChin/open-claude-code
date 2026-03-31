@@ -1,0 +1,1 @@
+export async function waitForUrlEvent(){ return null; }

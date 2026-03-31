@@ -1,0 +1,19 @@
+export type QuerySource =
+  | 'repl_main_thread'
+  | 'sdk'
+  | 'compact'
+  | 'session_memory'
+  | 'away_summary'
+  | 'auto_dream'
+  | 'extract_memories'
+  | 'agent_summary'
+  | 'magic_docs'
+  | 'tool_use_summary_generation'
+  | 'prompt_suggestion'
+  | 'speculation'
+  | 'hook_agent'
+  | 'verification_agent'
+  | 'marble_origami'
+  | `agent:${string}`
+  | `repl_main_thread:${string}`
+  | string

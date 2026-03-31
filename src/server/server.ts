@@ -1,0 +1,1 @@
+export async function serverMain(): Promise<void> {}

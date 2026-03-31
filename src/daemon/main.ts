@@ -1,0 +1,1 @@
+export async function daemonMain(): Promise<void> {}
