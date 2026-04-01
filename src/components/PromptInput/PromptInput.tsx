@@ -13,7 +13,7 @@ import { getCwd } from 'src/utils/cwd.js';
 import { isQueuedCommandEditable, popAllEditable } from 'src/utils/messageQueueManager.js';
 import stripAnsi from 'strip-ansi';
 import { companionReservedColumns } from '../../buddy/CompanionSprite.js';
-import { findBuddyTriggerPositions, useBuddyNotification } from '../../buddy/useBuddyNotification.js';
+import { findBuddyTriggerPositions, isBuddyLive, useBuddyNotification } from '../../buddy/useBuddyNotification.js';
 import { FastModePicker } from '../../commands/fast/fast.js';
 import { isUltrareviewEnabled } from '../../commands/review/ultrareviewEnabled.js';
 import { getNativeCSIuTerminalDisplayName } from '../../commands/terminalSetup/terminalSetup.js';
@@ -306,10 +306,11 @@ function PromptInput({
   const viewingAgentTaskId = useAppState(s => s.viewingAgentTaskId);
   const viewSelectionMode = useAppState(s => s.viewSelectionMode);
   const showSpinnerTree = useAppState(s => s.expandedView) === 'teammates';
+  const buddyLive = isBuddyLive();
   const {
     companion: _companion,
     companionMuted
-  } = feature('BUDDY') ? getGlobalConfig() : {
+  } = buddyLive ? getGlobalConfig() : {
     companion: undefined,
     companionMuted: undefined
   };
@@ -1786,7 +1787,7 @@ function PromptInput({
       }
       switch (footerItemSelected) {
         case 'companion':
-          if (feature('BUDDY')) {
+          if (buddyLive) {
             selectFooterItem(null);
             void onSubmit('/buddy');
           }
@@ -1981,9 +1982,7 @@ function PromptInput({
     });
   }, [effortNotificationText, addNotification, removeNotification]);
   useBuddyNotification();
-  const companionSpeaking = feature('BUDDY') ?
-  // biome-ignore lint/correctness/useHookAtTopLevel: feature() is a compile-time constant
-  useAppState(s => s.companionReaction !== undefined) : false;
+  const companionSpeaking = useAppState(s => buddyLive && s.companionReaction !== undefined);
   const {
     columns,
     rows

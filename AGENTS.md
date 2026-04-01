@@ -1,10 +1,10 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## Repository context
 
-- This is a recovered **Claude Code source snapshot** for research, not the official Anthropic repository.
+- This is a recovered **Codex source snapshot** for research, not the official Anthropic repository.
 - The codebase is TypeScript-first and uses **Bun** as the primary runtime/build tool.
 - The shipped CLI entrypoint for local development is `src/entrypoints/cli.tsx`, which bootstraps into `src/main.tsx`.
 - This snapshot is not a normal clean checkout: some generated/runtime assets expected by the app may be missing.
@@ -30,7 +30,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `bun run build`
   - Builds the Bun-targeted CLI bundle into `dist/` from `src/entrypoints/cli.tsx` via `scripts/build.ts`.
 - `bun run build:exe`
-  - Builds a Windows executable at `dist/claude-snapshot.exe`.
+  - Builds a Windows executable at `dist/Codex-snapshot.exe`.
 
 ### Type checking
 
@@ -128,7 +128,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - This repo is **feature-flag heavy**. Many commands, tools, and modes are conditionally compiled or conditionally required via `feature('...')` or environment checks. Before assuming functionality is active, verify the relevant gate.
 - This is a **Bun-oriented codebase**, not a standard Node CLI. Prefer Bun commands and Bun build assumptions when changing runtime behavior.
-- `src/main.tsx`, `src/entrypoints/cli.tsx`, `src/commands.ts`, `src/tools.ts`, and `src/QueryEngine.ts` are the fastest way to understand how a user request becomes a command/tool-enabled Claude session.
+- `src/main.tsx`, `src/entrypoints/cli.tsx`, `src/commands.ts`, `src/tools.ts`, and `src/QueryEngine.ts` are the fastest way to understand how a user request becomes a command/tool-enabled Codex session.
 - The Windows snapshot wrapper in `scripts/run-snapshot.ps1` sets repo-local HOME/config paths under `.codex-home/` and forces the built CLI to run with those isolated settings.
 - Treat this repository as a **research snapshot**: missing vendor/runtime artifacts can explain failures that would not happen in the original internal repository.
 - No `.cursorrules`, `.cursor/rules/`, or `.github/copilot-instructions.md` guidance files were present in this snapshot when this file was updated.

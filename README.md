@@ -50,6 +50,52 @@ This repository contains a mirrored `src/` snapshot for research and analysis.
 
 ---
 
+## Quick Start
+
+### 1. Install dependencies
+
+```bash
+bun install
+```
+
+### 2. Start the source entrypoint in interactive TUI mode
+
+```bash
+bun run dev
+```
+
+Or run the CLI entrypoint directly:
+
+```bash
+bun run ./src/entrypoints/cli.tsx
+```
+
+### 3. Build and run the bundled snapshot
+
+```bash
+bun run build
+bun run snapshot -- --help
+```
+
+On Windows, the snapshot wrapper uses a repo-local home/config under `.codex-home/`.
+
+### 4. Verify the companion (`/buddy`) in TUI
+
+Run the CLI in interactive mode, then enter:
+
+```text
+/buddy
+/buddy status
+```
+
+Notes:
+
+- The companion is rendered in the TUI beside the input area, not inside the command's text output.
+- If you use one-shot modes such as `-p` or `--bare`, you will only see command output, not the pet sprite.
+- For the full sprite, use a terminal at least 100 columns wide.
+
+---
+
 ## Directory Structure
 
 ```text

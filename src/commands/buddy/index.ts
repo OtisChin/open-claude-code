@@ -3,8 +3,10 @@ import type { Command } from '../../commands.js'
 const buddy = {
   type: 'local',
   name: 'buddy',
-  description: 'Buddy command',
-  load: async () => ({})
+  description: 'Hatch, pet, and manage your companion',
+  argumentHint: '[status|pet|mute|unmute|rehatch]',
+  supportsNonInteractive: true,
+  load: () => import('./buddy.js'),
 } satisfies Command
 
 export default buddy
