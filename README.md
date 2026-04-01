@@ -79,7 +79,46 @@ bun run snapshot -- --help
 
 On Windows, the snapshot wrapper uses a repo-local home/config under `.codex-home/`.
 
-### 4. Verify the companion (`/buddy`) in TUI
+### 4. Configure the model
+
+You can configure the runtime model in two common ways.
+
+Using `settings.json`:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:8317/v1",
+    "ANTHROPIC_API_KEY": "your-key",
+    "ANTHROPIC_MODEL": "gpt-5.4",
+    "CLAUDE_CODE_USE_OPENAI_COMPAT": "1"
+  }
+}
+```
+
+Default config locations:
+
+- User settings: `~/.claude/settings.json`
+- Global config: `~/.claude.json`
+
+If you want the executable to use a specific config directory, set `CLAUDE_CONFIG_DIR` before launch:
+
+```powershell
+$env:CLAUDE_CONFIG_DIR="D:\code\my\open-claude-code\.codex-home\.claude"
+.\dist\OpenClaudeCode.exe
+```
+
+You can also set environment variables directly for a single launch:
+
+```powershell
+$env:ANTHROPIC_BASE_URL="http://127.0.0.1:8317/v1"
+$env:ANTHROPIC_API_KEY="your-key"
+$env:ANTHROPIC_MODEL="gpt-5.4"
+$env:CLAUDE_CODE_USE_OPENAI_COMPAT="1"
+.\dist\OpenClaudeCode.exe
+```
+
+### 5. Summon the companion (`/buddy`) in TUI
 
 Run the CLI in interactive mode, then enter:
 

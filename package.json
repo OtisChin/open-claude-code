@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "bun run ./src/entrypoints/cli.tsx",
     "build": "bun run ./scripts/build.ts",
-    "build:exe": "bun build ./src/entrypoints/cli.tsx --target bun --compile --outfile ./dist/claude-snapshot.exe --define MACRO.VERSION=\\\"0.0.0-snapshot\\\" --loader .md:text --loader .txt:text",
+    "build:exe": "bun run ./scripts/build-exe.ts",
     "typecheck": "tsc --noEmit",
     "snapshot": "powershell -ExecutionPolicy Bypass -File ./scripts/run-snapshot.ps1",
     "snapshot:help": "powershell -ExecutionPolicy Bypass -File ./scripts/run-snapshot.ps1 --help",
